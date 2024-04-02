@@ -1,0 +1,32 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Создать новый вариант</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+  <h1>Конструктор нового варианта</h1>
+
+  <form th:action="@{/create}" th:object="${version}" method="post">
+    <div>
+      <label> Номер версии: </label>
+      <input type="text" th:field="*{versionNum}" />
+    </div>
+    <div>
+      <label> Байт: </label>
+      <input type="text" th:field="*{number1}" />
+    </div>
+    <div>
+      <label> Код Хемминга: </label>
+      <input type="text" th:field="*{number2}" />
+    </div>
+    <input type="submit" value="Создать вариант" />
+
+  </form>
+</body>
+
+</html>
