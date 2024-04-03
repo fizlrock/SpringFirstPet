@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fizlrock.pet.Domain.Lab4Version;
+import com.fizlrock.pet.Domain.DTO.Lab4Version;
 import com.fizlrock.pet.Services.Lab4Controller.Lab4Service;
 
 import lombok.AllArgsConstructor;
