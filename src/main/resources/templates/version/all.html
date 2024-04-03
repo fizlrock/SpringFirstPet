@@ -1,0 +1,47 @@
+<HTML>
+
+<head>
+  <TITLE>Помехозащитное кодирование</TITLE>
+  <link rel="stylesheet" th:href="@{/styles/style.css}">
+  <link rel="stylesheet" th:href="@{/styles/table.css}">
+</head>
+
+<BODY>
+
+  <div class="header">
+    <div class="header-left">
+      Теория информации <br> Лабораторная №4
+    </div>
+    <div class="header-right">
+      <form action="/"><input class="button-style" type="submit" value="Главная"></form>
+      <form action="/version/all"><input class="button-style" type="submit" value="Все варианты"></form>
+      <form action="/version/new"><input class="button-style" type="submit" value="Новый вариант"></form>
+    </div>
+  </div>
+
+  <div>
+    <div class="tableblock">
+      <table id="table" class="datatable">
+        <caption>Таблица вариантов</caption>
+        <tr>
+          <th>№ варианта <br> (перейти)</th>
+          <th>Информационный байт</th>
+          <th>Код Хемминга</th>
+        </tr>
+
+        <tr th:each="version : ${allVersions}">
+          <th class="tablelink">
+            <a th:href="@{/version/{id}(id=${version.getVersionNum()})}" th:text="${version.getVersionNum()}"><span
+                th:text=" ${version.getVersionNum()}" /></a>
+          </th>
+          <td th:text="${version.getNumber1()}" />
+          <td th:text="${version.getNumber2()}" />
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</BODY>
+
+</HTML>
