@@ -1,5 +1,5 @@
 
-package com.fizlrock.pet.Domain;
+package com.fizlrock.pet.Domain.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

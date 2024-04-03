@@ -1,4 +1,4 @@
-package com.fizlrock.pet.Domain;
+package com.fizlrock.pet.Domain.DTO;
 
 /**
  * TaskState

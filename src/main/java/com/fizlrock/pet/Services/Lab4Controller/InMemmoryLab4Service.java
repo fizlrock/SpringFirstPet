@@ -1,12 +1,11 @@
 package com.fizlrock.pet.Services.Lab4Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.fizlrock.pet.Domain.Lab4Version;
+import com.fizlrock.pet.Domain.DTO.Lab4Version;
 
 /**
  * InMemmoryLab4Controller

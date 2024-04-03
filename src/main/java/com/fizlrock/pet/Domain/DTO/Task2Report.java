@@ -1,8 +1,7 @@
-package com.fizlrock.pet.Domain;
+package com.fizlrock.pet.Domain.DTO;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 /**
