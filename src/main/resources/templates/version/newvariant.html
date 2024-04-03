@@ -1,0 +1,33 @@
+<HTML>
+    <head>
+    <TITLE>Помехозащитное кодирование</TITLE>
+    <link rel = "stylesheet" href="style.css">
+    </head>
+
+    <BODY>
+        <div class="header">
+            <div class="header-left">
+                Теория информации <br> Лабораторная №4
+            </div>
+            <div class="header-right">
+            <form action="main.html"><input class="button-style" type="submit" value="Главная"></form>     
+            <form action="allversions.html"><input class="button-style" type="submit" value="Все варианты"></form>
+            <form action="newvariant.html"><input class="button-style" type="submit" value="Новый вариант"></form>
+            </div>       
+        </div>
+
+        <div>
+			<form id="id1">
+				<div class="labels">
+					<tr class="tinp"><label for="fbyte">Информационный байт</label>
+					<tr class="tinp"><label for="fhemm">Код Хемминга с ошибкой</label>
+				</div>
+				<div class="lines">
+						<td class="tinp"><input class="inp" required type="text" value="01100011" name ="fbyte" id="fbyte"><br></td>
+						<td class="tinp"><input class="inp" required type="number" value="011010100011" name ="fhemm" id="fhemm"><br></td>
+						<td colspan="2" class="tinp1"><br><button type="button" class="inp" onclick="addRow()">Посчитать</button></td>		
+				</div>
+			</form>
+		</div>
+    </BODY>
+</HTML>
