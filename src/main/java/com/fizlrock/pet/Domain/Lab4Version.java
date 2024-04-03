@@ -41,7 +41,6 @@ public class Lab4Version {
 
   @Override
   public int hashCode() {
-
     return (number1 + number2).hashCode();
   }
 

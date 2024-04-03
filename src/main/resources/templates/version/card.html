@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-  <p>Вариант № <span th:text="${version.getVersionNum()}">0</span></p>
+
+  <div>
+    <p>Вариант № <span th:text="${version.getVersionNum()}">0</span></p>
+    <p>Байт: <span th:text="${version.getNumber1()}">0</span></p>
+    <p>Код Хемминга: <span th:text="${version.getNumber2()}">0</span></p>
+  </div>
 </body>
 
 </html>
