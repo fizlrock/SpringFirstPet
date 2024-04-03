@@ -31,16 +31,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Lab4Option {
+public class Lab4Version {
 
   public int versionNum;
   public String number1;
   public String number2;
 
-  public int parityBit;
+  // public int parityBit;
 
   @Override
   public int hashCode() {
+
     return (number1 + number2).hashCode();
   }
 

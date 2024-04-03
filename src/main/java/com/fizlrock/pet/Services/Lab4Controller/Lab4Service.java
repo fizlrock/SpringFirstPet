@@ -2,11 +2,12 @@
 package com.fizlrock.pet.Services.Lab4Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.fizlrock.pet.Domain.Lab4Option;
+import com.fizlrock.pet.Domain.Lab4Version;
 
 /**
  * Lab4Controller
@@ -14,7 +15,8 @@ import com.fizlrock.pet.Domain.Lab4Option;
 @Component
 @Scope("singleton")
 public interface Lab4Service {
-  public List<Lab4Option> getAllSavedVersions();
-  public void addVersion(Lab4Option v);
+  public List<Lab4Version> getAllSavedVersions();
+  public void addVersion(Lab4Version v);
+  public Optional<Lab4Version> getVersionById(int id);
 
 }

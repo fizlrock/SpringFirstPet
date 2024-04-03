@@ -1,7 +1,3 @@
-
-
-
-
 <div>
   <h1>Все варианты (от кудриной)</h1>
 
@@ -13,15 +9,13 @@
     </tr>
 
     <tr th:each="version : ${allVersions}">
-        <td th:text="${version.getVersionNum()}"/>
-        <td th:text="${version.getNumber1()}"/>
-        <td th:text="${version.getNumber2()}"/>
+      <td>
+        <a th:href="@{/version/{id}(id=${version.getVersionNum()})}" th:text="${version.getVersionNum()}"><span
+            th:text=" ${version.getVersionNum()}" /></a>
+      </td>
+      <td th:text="${version.getNumber1()}" />
+      <td th:text="${version.getNumber2()}" />
     </tr>
   </table>
 
-<div>
-
-
-
-
-
+  <div>
