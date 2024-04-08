@@ -38,8 +38,8 @@ public record Task2Report(
    */
   @Builder
   public static record CodingStep(
-      int stepNum,
-      boolean[] bufferState,
+      int controlBitIndex,
+      List<Integer> bufferState,
       List<Integer> usedBits,
       String comment) {
   };

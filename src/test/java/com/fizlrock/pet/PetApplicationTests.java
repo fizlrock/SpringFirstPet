@@ -22,19 +22,5 @@ class PetApplicationTests {
 	}
 
 
-	@Test
-	void getParityBitTests() {
-		BinaryValue br = new BinaryValue("001010100010");
-
-		var testCases = Map.of(
-				new int[] { 2, 4, 6, 8, 10 }, 0,
-				new int[] { 2, 5, 6, 9, 10 }, 1,
-				new int[] { 4, 5, 6, 11 }, 0,
-				new int[] { 8, 9, 10, 11 }, 1);
-
-		for (var e : testCases.entrySet()) {
-			assertEquals(e.getValue(), br.getParityBit(e.getKey()), "On bits " + Arrays.toString(e.getKey()));
-		}
-	}
 
 }

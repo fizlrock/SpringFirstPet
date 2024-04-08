@@ -12,7 +12,8 @@ public class PetApplication {
 	public static void main(String[] args) {
 
 		// SpringApplication.run(PetApplication.class, args);
-		Lab4Executor.executeTask2("11010010");
+		var report = Lab4Executor.executeTask2("11010010");
+		System.out.println(report);
 
 	}
 
