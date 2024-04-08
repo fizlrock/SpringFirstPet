@@ -18,14 +18,18 @@
 
         <div>
 			<form id="id1">
-				<div class="labels">
-					<tr class="tinp"><label for="fbyte">Информационный байт</label>
-					<tr class="tinp"><label for="fhemm">Код Хемминга с ошибкой</label>
-				</div>
 				<div class="lines">
-						<td class="tinp"><input class="inp" required type="text" value="01100011" name ="fbyte" id="fbyte"><br></td>
-						<td class="tinp"><input class="inp" required type="number" value="011010100011" name ="fhemm" id="fhemm"><br></td>
-						<td colspan="2" class="tinp1"><br><button type="button" class="inp" onclick="addRow()">Посчитать</button></td>		
+                    <table class="newvar">
+                        <tr>
+                            <th>Информационный байт</th>
+                            <th>Код Хемминга с ошибкий</th>                    
+                        </tr>
+                        <tr>
+                            <td class="tinp"><input class="inp" required type="text" value="01100011" name ="fbyte" id="fbyte"><br></td>
+                            <td class="tinp"><input class="inp" required type="text" value="011010100011" name ="fhemm" id="fhemm"><br></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="inp" onclick="addRow()">Посчитать</button>	
 				</div>
 			</form>
 		</div>

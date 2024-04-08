@@ -46,8 +46,15 @@ img
 {
 	margin-top: 15px;
 }
+.lines {
+    background-color: #A81607;
+    margin-top: 20px;
+    width: 50%;
+}
+.newvar {
+    margin-bottom: 10px;
+}
 @font-face {
 	font-family: 'NeueMachina-Light'; 
-	src: local('NeueMachina-Light'),
-		url(/fonts/NeueMachina-Light.ttf); 
+	src: url('NeueMachina-Light.ttf'); 
 }
