@@ -16,10 +16,14 @@ import lombok.Builder;
  */
 @Builder
 public record Task2Report(
+    String input,
+    String output,
+    String comment,
+    TaskState state,
     int dataSize,
     int cryptedDataSize,
-    int[] dataBits,
-    int[] controlBits,
+    List<Integer> dataBitsIndexes,
+    List<Integer> controlBitsIndexes,
     List<CodingStep> steps) {
 
   /**
@@ -35,8 +39,8 @@ public record Task2Report(
   @Builder
   public static record CodingStep(
       int stepNum,
-      int[] bufferState,
-      int[] usedBits,
+      boolean[] bufferState,
+      List<Integer> usedBits,
       String comment) {
   };
 }

@@ -15,12 +15,10 @@ import lombok.Getter;
  * </ul>
  */
 
-@AllArgsConstructor
 @Builder
-@Getter
-public class Task1Report {
-  private String input;
-  private String result;
-  private String comment;
-  private TaskState state;
+public record Task1Report(
+    String input,
+    String result,
+    String comment,
+    TaskState state) {
 }
