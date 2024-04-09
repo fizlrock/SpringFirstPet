@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+  <link rel="stylesheet" th:href="@{/styles/table.css}">
+</head>
+
 <body>
 
   <div>
@@ -8,6 +12,103 @@
     <p>Байт: <span th:text="${version.getNumber1()}">0</span></p>
     <p>Код Хемминга: <span th:text="${version.getNumber2()}">0</span></p>
   </div>
-</body>
+
+  <div>
+    <p>Задание 1</p>
+
+    <span th:if="${task1.state().toString() == 'Failed'}">
+
+      <a> Ошибка выполнения задания 1.</a>
+      <a th:text="${task1.comment()}" />
+
+    </span>
+
+    <span th:unless="${task1.state().toString() == 'Failed'}">
+
+      <div>
+        <a> Входная строка:</a>
+        <a th:text="${task1.input()}" />
+      </div>
+      <div>
+        <a> Результат:</a>
+        <a th:text="${task1.result()}" />
+      </div>
+      <div>
+        <a> Комментарий:</a>
+        <a th:text="${task1.comment()}" />
+      </div>
+
+    </span>
+  </div>
+
+
+  <div>
+    <p>Задание 2</p>
+
+    <span th:if="${task2.state().toString() == 'Failed'}">
+
+      <a> Ошибка выполнения задания 2.</a>
+      <a th:text="${task2.comment()}" />
+
+    </span>
+
+    <span th:unless="${task1.state().toString() == 'Failed'}">
+
+      <div>
+        <a> Входная строка:</a>
+        <a th:text="${task2.input()}" />
+      </div>
+      <div>
+        <a> Результат:</a>
+        <a th:text="${task2.output()}" />
+      </div>
+      <div>
+        <a> Размерность входных данных:</a>
+        <a th:text="${task2.dataSize()}" />
+        <a>бит</a>
+      </div>
+      <div>
+        <a> Размерность выходных данных:</a>
+        <a th:text="${task2.cryptedDataSize()}" />
+        <a>бит</a>
+      </div>
+
+      <div>
+        <a> Индексы контрольных бит:</a>
+        <a th:text="${task2.controlBitsIndexes().toString()}" />
+      </div>
+
+      <table id="table" class="datatable">
+        <caption>Таблица вариантов</caption>
+        <tr>
+          <th>Индекс контрольного бита</th>
+          <th>Индексы информационных бит для расчета</th>
+          <th>Комментарий</th>
+          <th>Результат</th>
+        </tr>
+
+        <tr th:each="step: ${task2.steps()}">
+
+          <td th:text="${step.controlBitIndex()}" />
+          <td th:text="${step.usedBits()}" />
+          <td th:text="${step.comment()}" />
+          <!-- <td th:text="${step.bufferState().toString()}" /> -->
+          <td>
+            <table id="table" class="datatable">
+
+              <tr th:each="bit, iter: ${step.bufferState()}">
+                <a th:if="${iter.index == step.controlBitIndex()}" th:text="${bit}" style="background-color: green;" />
+                <a th:if="${step.usedBits().contains(iter.index)}" th:text="${bit}" style="background-color: yellow;" />
+                <a th:unless="${step.usedBits().contains(iter.index)}" th:text="${bit}" />
+              </tr>
+              <!-- <td th:text="${bit}" /> -->
+              <!-- </tr> -->
+
+            </table>
+          </td>
+        </tr>
+      </table>
+    </span>
+  </div>
 
 </html>

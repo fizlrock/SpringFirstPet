@@ -107,7 +107,7 @@ public class Lab4Executor {
 
   }
 
-  public static Task2Report executeTask2(String line) {
+  public Task2Report executeTask2(String line) {
     var report = Task2Report.builder();
 
     report.state(TaskState.NotResolved);
@@ -156,13 +156,16 @@ public class Lab4Executor {
 
       steps.add(step.build());
     }
+    report.dataSize(input.size);
+    report.cryptedDataSize(result.size);
+    report.controlBitsIndexes(cb_nums);
     report.steps(steps);
     report.output(result.toString());
 
     return report.build();
   }
 
-  public static List<Integer> getCBIndexes(int message_size) {
+  public List<Integer> getCBIndexes(int message_size) {
     if (message_size <= 0)
       throw new IllegalArgumentException("Длина сообщения должна быть больше 0");
 
