@@ -14,101 +14,128 @@
   </div>
 
   <div>
-    <p>Задание 1</p>
 
-    <span th:if="${task1.state().toString() == 'Failed'}">
 
-      <a> Ошибка выполнения задания 1.</a>
-      <a th:text="${task1.comment()}" />
 
-    </span>
+    <div th:if="${task1.isPresent()}" th:with="t1=${task1.get()}">
+      <p>Задание 1</p>
 
-    <span th:unless="${task1.state().toString() == 'Failed'}">
+      <span th:if="${t1.state().toString() == 'Failed'}">
+        <a> Ошибка выполнения задания 1.</a>
+        <a th:text="${t1.comment()}" />
+      </span>
 
-      <div>
-        <a> Входная строка:</a>
-        <a th:text="${task1.input()}" />
-      </div>
-      <div>
-        <a> Результат:</a>
-        <a th:text="${task1.result()}" />
-      </div>
-      <div>
-        <a> Комментарий:</a>
-        <a th:text="${task1.comment()}" />
-      </div>
+      <span th:unless="${t1.state().toString() == 'Failed'}">
+        <div>
+          <a> Входная строка:</a>
+          <a th:text="${t1.input()}" />
+        </div>
+        <div>
+          <a> Результат:</a>
+          <a th:text="${t1.result()}" />
+        </div>
+        <div>
+          <a> Комментарий:</a>
+          <a th:text="${t1.comment()}" />
+        </div>
+      </span>
+    </div>
 
-    </span>
+    <div th:unless="${task1.isPresent()}">
+      <p>Внутрення ошибка. Бек вернул null</p>
+    </div>
+
   </div>
 
 
   <div>
     <p>Задание 2</p>
 
-    <span th:if="${task2.state().toString() == 'Failed'}">
+    <div th:if="${task2.isPresent()}" th:with="t2=${task2.get()}">
+      <span th:if="${t2.state().toString() == 'Failed'}">
 
-      <a> Ошибка выполнения задания 2.</a>
-      <a th:text="${task2.comment()}" />
+        <a> Ошибка выполнения задания 2.</a>
+        <a th:text="${t2.comment()}" />
 
-    </span>
+      </span>
 
-    <span th:unless="${task1.state().toString() == 'Failed'}">
+      <span th:unless="${t2.state().toString() == 'Failed'}">
+        <div>
+          <a> Входная строка:</a>
+          <a th:text="${t2.input()}" />
+        </div>
+        <div>
+          <a> Результат:</a>
+          <a th:text="${t2.output()}" />
+        </div>
+        <div>
+          <a> Размерность входных данных:</a>
+          <a th:text="${t2.dataSize()}" />
+          <a>бит</a>
+        </div>
+        <div>
+          <a> Размерность выходных данных:</a>
+          <a th:text="${t2.cryptedDataSize()}" />
+          <a>бит</a>
+        </div>
 
-      <div>
-        <a> Входная строка:</a>
-        <a th:text="${task2.input()}" />
-      </div>
-      <div>
-        <a> Результат:</a>
-        <a th:text="${task2.output()}" />
-      </div>
-      <div>
-        <a> Размерность входных данных:</a>
-        <a th:text="${task2.dataSize()}" />
-        <a>бит</a>
-      </div>
-      <div>
-        <a> Размерность выходных данных:</a>
-        <a th:text="${task2.cryptedDataSize()}" />
-        <a>бит</a>
-      </div>
+        <div>
+          <a> Индексы контрольных бит:</a>
+          <a th:text="${t2.controlBitsIndexes().toString()}" />
+        </div>
 
-      <div>
-        <a> Индексы контрольных бит:</a>
-        <a th:text="${task2.controlBitsIndexes().toString()}" />
-      </div>
+        <table id="table" class="datatable">
+          <caption>Таблица вариантов</caption>
+          <tr>
+            <th>Индекс контрольного бита</th>
+            <th>Индексы информационных бит для расчета</th>
+            <th>Комментарий</th>
+            <th>Результат</th>
+          </tr>
 
-      <table id="table" class="datatable">
-        <caption>Таблица вариантов</caption>
-        <tr>
-          <th>Индекс контрольного бита</th>
-          <th>Индексы информационных бит для расчета</th>
-          <th>Комментарий</th>
-          <th>Результат</th>
-        </tr>
+          <tr th:each="step: ${t2.steps()}">
 
-        <tr th:each="step: ${task2.steps()}">
+            <td th:text="${step.controlBitIndex()}" />
+            <td th:text="${step.usedBits()}" />
+            <td th:text="${step.comment()}" />
+            <!-- <td th:text="${step.bufferState().toString()}" /> -->
+            <td>
+              <table id="table" class="datatable">
 
-          <td th:text="${step.controlBitIndex()}" />
-          <td th:text="${step.usedBits()}" />
-          <td th:text="${step.comment()}" />
-          <!-- <td th:text="${step.bufferState().toString()}" /> -->
-          <td>
-            <table id="table" class="datatable">
+                <tr th:each="bit, iter: ${step.bufferState()}">
 
-              <tr th:each="bit, iter: ${step.bufferState()}">
-                <a th:if="${iter.index == step.controlBitIndex()}" th:text="${bit}" style="background-color: green;" />
-                <a th:if="${step.usedBits().contains(iter.index)}" th:text="${bit}" style="background-color: yellow;" />
-                <a th:unless="${step.usedBits().contains(iter.index)}" th:text="${bit}" />
-              </tr>
-              <!-- <td th:text="${bit}" /> -->
-              <!-- </tr> -->
+                  <a th:if="${iter.index == step.controlBitIndex()}" th:text="${bit}"
+                    style="background-color: green;" />
 
-            </table>
-          </td>
-        </tr>
-      </table>
-    </span>
+                  <a th:if="${step.usedBits().contains(iter.index)}" th:text="${bit}"
+                    style="background-color: yellow;" />
+
+                  <a th:if="${!step.usedBits().contains(iter.index) and iter.index != step.controlBitIndex()}"
+                    th:text="${bit}" />
+                </tr>
+
+                <!-- <tr th:each="bit, iter: ${step.bufferState()}"> -->
+                <!-- <a th:if="${iter.index == step.controlBitIndex()}" th:text="${bit}" -->
+                <!-- style="background-color: green;" /> -->
+                <!-- <a th:if="${step.usedBits().contains(iter.index)}" th:text="${bit}" -->
+                <!-- style="background-color: yellow;" /> -->
+                <!-- <a th:unless="${step.usedBits().contains(iter.index)}" th:text="${bit}" /> -->
+                <!-- </tr> -->
+                <!-- <td th:text="${bit}" /> -->
+                <!-- </tr> -->
+
+              </table>
+            </td>
+          </tr>
+        </table>
+      </span>
+    </div>
+
+    <div th:unless="${task2.isPresent()}">
+      <p>Внутрення ошибка. Бек вернул null</p>
+    </div>
+
+
   </div>
 
 </html>

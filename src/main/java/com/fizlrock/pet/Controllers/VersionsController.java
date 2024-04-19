@@ -40,21 +40,12 @@ public class VersionsController {
   @GetMapping("/{id}")
   public String showVersion(@PathVariable("id") int id, Model model) {
     var version = service.getVersionById(id);
-    var report1 = service.getTask1Report(id);
-    var report2 = service.getTask2Report(id);
-    if (report1.isEmpty()) {
-      log.error("Отчет 1 пуст");
-      return "404";
-    }
-    if (report2.isEmpty()) {
-      log.error("Отчет 2 пуст");
-      return "404";
-    }
     if (version.isPresent()) {
-
+      var report1 = service.getTask1Report(id);
+      var report2 = service.getTask2Report(id);
       model.addAttribute("version", version.get());
-      model.addAttribute("task1", report1.get());
-      model.addAttribute("task2", report2.get());
+      model.addAttribute("task1", report1);
+      model.addAttribute("task2", report2);
       return "version/card";
     }
     return "404";
