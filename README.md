@@ -17,3 +17,4 @@
 ## Скриншоты
 
 ![Главная страница](https://github.com/fizlrock/SpringFirstPet/blob/main/images/main.png)
+![Решенный вариант](https://github.com/fizlrock/SpringFirstPet/blob/main/images/version_card.png)
