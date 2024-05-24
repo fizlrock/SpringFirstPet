@@ -12,3 +12,8 @@
 - Бит четности(parity bit)
 - Код Хемминга  
 
+
+
+## Скриншоты
+
+![Главная страница](https://github.com/fizlrock/SpringFirstPet/blob/main/images/main.png)
